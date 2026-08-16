@@ -1,33 +1,15 @@
-import { useAuth } from "@/_core/hooks/useAuth";
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import { FilterPanel, HistoryPanel, MapLegend, QuestionBar, ResultsPanel, SettingsPanel, StatusBar } from "@/components/CivicPanels";
+import USSentimentMap from "@/components/USSentimentMap";
+import { AppProvider, useCivicPulse } from "@/contexts/AppContext";
+import { AlertCircle, MapPinned } from "lucide-react";
+import { useState } from "react";
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Workflow, Frontend Best Practices, Design Guide and Common Pitfalls
- */
-export default function Home() {
-  // The useAuth hook provides authentication state.
-  // To implement login/logout, call logout(), or start login from an event
-  // handler: onClick={() => startLogin()} (imported from "@/const"). Never call
-  // startLogin() during render (no href={startLogin()}) — it mints a one-time
-  // nonce cookie and must run only at the moment of navigation.
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
-
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
-
-  return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
-    </div>
-  );
+function CivicPulseExperience() {
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [historyOpen, setHistoryOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const { stateStats, setSelectedState, selectedState, error, datasetConfig } = useCivicPulse();
+  return <main className="relative min-h-screen overflow-hidden bg-[#07111f] pb-4 text-slate-100"><div className="pointer-events-none absolute inset-0 civic-grid opacity-60" /><div className="pointer-events-none absolute left-1/2 top-[-360px] h-[660px] w-[820px] -translate-x-1/2 rounded-full bg-cyan-400/[.06] blur-[120px]" /><StatusBar onOpenFilters={() => setFiltersOpen(true)} onOpenHistory={() => setHistoryOpen(true)} onOpenSettings={() => setSettingsOpen(true)} /><div className="relative z-10 mx-3 mt-3 grid gap-3 lg:mx-5 lg:grid-cols-[300px_minmax(0,1fr)_380px] lg:gap-4"><FilterPanel open={filtersOpen} onClose={() => setFiltersOpen(false)} /><section className="relative min-h-[620px] overflow-hidden rounded-3xl border border-white/10 bg-slate-900/35 shadow-[0_20px_70px_rgba(0,0,0,.35)]"><div className="absolute inset-0">{datasetConfig.geographyEnabled ? <USSentimentMap stateStats={stateStats} onSelectState={setSelectedState} selectedState={selectedState} boundaryUrl={datasetConfig.boundaryUrl} /> : <div className="flex h-full items-center justify-center bg-slate-950/60 text-center"><div><MapPinned className="mx-auto size-7 text-cyan-300/40" /><p className="mt-3 text-sm text-slate-400">Geographic visualization is disabled in owner settings.</p></div></div>}</div>{datasetConfig.geographyEnabled && <MapLegend />}{error && <div className="absolute left-4 top-20 z-20 flex max-w-md items-start gap-2 rounded-xl border border-rose-300/20 bg-rose-950/75 px-3 py-2 text-xs leading-5 text-rose-100 backdrop-blur"><AlertCircle className="mt-0.5 size-4 shrink-0 text-rose-300" />{error}</div>}{datasetConfig.geographyEnabled && <div className="absolute right-4 top-4 z-20 hidden rounded-xl border border-white/10 bg-slate-950/65 px-3 py-2 text-[10px] text-slate-400 backdrop-blur sm:block"><span className="flex items-center gap-1.5"><MapPinned className="size-3 text-cyan-300" />Click a state to constrain the audience</span></div>}<QuestionBar /></section><ResultsPanel /></div><div className="relative z-20 mx-3 mt-3 rounded-xl border border-amber-300/15 bg-amber-300/[.06] px-3 py-2 text-center text-[10px] leading-4 text-amber-100/85 sm:mx-5">Synthetic-persona simulator: all profiles and responses are AI-generated illustrative outputs, not real survey data, observed public opinion, or claims about individual people.</div><HistoryPanel open={historyOpen} onClose={() => setHistoryOpen(false)} /><SettingsPanel open={settingsOpen} onClose={() => setSettingsOpen(false)} /></main>;
 }
+
+export default function Home() { return <AppProvider><CivicPulseExperience /></AppProvider>; }

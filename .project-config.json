@@ -1,0 +1,42 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [
+    "server",
+    "db",
+    "user"
+  ],
+  "dev_command": "pnpm run dev",
+  "env_vars": {
+    "DATABASE_URL": "mysql://3TXvuzLQZXngzQB.062f885400b8:CgGw5U2Mv3R8W4i2dIDd@gateway02.us-east-1.prod.aws.tidbcloud.com:4000/EJ7eioqbKSXbgSNQanKLhZ?ssl={\"rejectUnauthorized\":true}"
+  },
+  "experiments": [
+    "no_db_push"
+  ],
+  "git_remote": {
+    "repo_url": "https://7f0548f6b28a1758d9bf7be630d36cb4.artifacts.cloudflare.net/git/prod/EJ7eioqbKSXbgSNQanKLhZ.git",
+    "expiration": "2026-08-17T10:01:24.778Z",
+    "token": "art_v2_x_ad92855e526451f0fedf8021eea802069acc012f?expires=1786960884",
+    "backend": "GIT_BACKEND_ARTIFACTS"
+  },
+  "name": "civic-pulse-persona-explorer",
+  "path": "/home/ubuntu/civic-pulse-persona-explorer",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "ntp5xN2Fq7VBU9859QMTap",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "j5ZPTusqUL4iV2h87UJckp",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "Triston Faile",
+    "OWNER_OPEN_ID": "Tj9BMXqdr6H9e9xxNR8WYp",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "dd7e027f-9e24-49e3-b592-8f39bb29f90f",
+    "VITE_APP_ID": "EJ7eioqbKSXbgSNQanKLhZ",
+    "VITE_APP_LOGO": "",
+    "VITE_APP_TITLE": "Civic Pulse — Interactive Persona Explorer",
+    "VITE_FRONTEND_FORGE_API_KEY": "bN82Jj4UFZEW6qBfkAntSH",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-db-user",
+  "test_command": "pnpm test"
+}

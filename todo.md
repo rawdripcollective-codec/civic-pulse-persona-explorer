@@ -1,0 +1,23 @@
+# Project TODO
+
+- [x] Document the NVIDIA Nemotron-Personas-USA provenance, license, synthetic-data disclosure, and dataset-adapter contract.
+- [x] Create a curated, representative persona sample with normalized age, sex, state, occupation, education, marital status, political lean, income tier, and biographical context fields.
+- [x] Add a dataset-adapter layer that can validate and normalize a replacement persona dataset without changing application components.
+- [x] Add database tables and server helpers for persisted simulation history and aggregate result snapshots.
+- [x] Implement a batch-aware LLM simulation service with robust JSON parsing, neutral fallbacks, and a progressive 10/20/remainder wave strategy.
+- [x] Add typed public tRPC procedures for generating simulation waves and retrieving, saving, and restoring historical simulations.
+- [x] Write Vitest coverage for wave sizing, LLM response parsing, batching, validation, fallback behavior, and history persistence helpers.
+- [x] Build the dark Civic Pulse visual system with a persistent synthetic-output provenance banner and accessible semantic colors.
+- [x] Build the responsive question bar with civic-domain prompt suggestions, run controls, and session history panel.
+- [x] Build demographic controls for age, sex, education, income, region, political lean, and sample size, usable before and after a simulation.
+- [x] Build a state-level interactive US sentiment map with hover details, dynamic fill colors, region filtering, and a visible legend.
+- [x] Build staggered persona response cards with avatar treatment, context summary, exactly three sentiment labels, and expandable answer text.
+- [x] Build Recharts visualizations for sentiment and demographic distributions across age, education, region, and occupation.
+- [x] Build the settings view for active dataset metadata, sample size, civic-domain label, region mode, and adapter guidance.
+- [x] Wire progressive wave delivery, accumulated sentiment, state metrics, query history, and local UI persistence through AppContext.
+- [x] Complete the README with architecture, dataset citation, adapter instructions, development setup, environment variables, and MIT licensing.
+- [x] Verify type checking, Vitest coverage, production build, responsive UI states, and live preview behavior.
+- [ ] Publish the finalized source to a public GitHub repository and retain the initial project configuration in version history.
+- [x] Add Vitest coverage for persisted history save/list serialization behavior.
+- [x] Extend owner settings with a configurable default sample size and explicit geographic mode control.
+- [x] Make adapter guidance available through a clear in-app informational view rather than an external dataset link.
