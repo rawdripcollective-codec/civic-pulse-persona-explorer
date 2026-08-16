@@ -17,7 +17,7 @@
 - [x] Wire progressive wave delivery, accumulated sentiment, state metrics, query history, and local UI persistence through AppContext.
 - [x] Complete the README with architecture, dataset citation, adapter instructions, development setup, environment variables, and MIT licensing.
 - [x] Verify type checking, Vitest coverage, production build, responsive UI states, and live preview behavior.
-- [ ] Publish the finalized source to a public GitHub repository and retain the initial project configuration in version history.
+- [x] Publish the finalized source to a public GitHub repository and retain the initial project configuration in version history.
 - [x] Add Vitest coverage for persisted history save/list serialization behavior.
 - [x] Extend owner settings with a configurable default sample size and explicit geographic mode control.
 - [x] Make adapter guidance available through a clear in-app informational view rather than an external dataset link.
